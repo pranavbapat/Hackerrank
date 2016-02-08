@@ -1,0 +1,62 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+      //Scanner object for taking user inputs
+    	Scanner in = new Scanner(System.in);
+    	
+    	//Numebr of sticks
+    	int n = in.nextInt();
+    	
+    	//Array of integers to store stick lengths
+    	int[] arr = new int[n];
+    	
+    	//Inputting all stick length
+    	for(int i=0;i<n;i++)
+    		arr[i] = in.nextInt();
+    		
+    	//Sub is the index of the minimum element in the array
+    	int sub=0;
+    	
+    	//Ptr is a copy of sub to ensure sub does not change while calculation
+    	int ptr=0;
+    	
+    	//Sorting the array in non-decreasing order of stick length
+    	Arrays.sort(arr);
+    	
+    	//Integer to keep track of initial stick count
+    	int stickCount = n;
+    	
+    	//While sticks remain in the array
+    	while(n != 0)
+    	{
+    	  //Display stick count
+    		System.out.println(n);
+    		
+    		//Ptr represents the index of minimum element in the array
+    		ptr = sub;
+    		
+    		//Element is the number to subtract from all stick lengths (Smallest stick length)
+    		int element = arr[ptr];
+    		
+    		//Subtract element from all the sticks in the array
+    		for(int i=ptr;i<stickCount;i++)
+    		{
+    			arr[i] -= element;
+    			
+    			//If, after subtracting, the length becomes less than 0, then that indicates stick is no more
+    			if(arr[i] < 1)
+    			{
+    			  //Decreasing stick count
+    				 n--;
+    				sub++;
+    			}
+    		}
+    	}
+    }
+}

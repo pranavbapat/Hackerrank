@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        //Scanner object for taking user inputs
+        Scanner in = new Scanner(System.in);
+        
+        //Number of testcases in the input file
+        int t = in.nextInt();
+        
+        //Answer initialized to 1 i.e. starting height of the tree
+        int ans=1;
+        
+        //For each testcase calculate the height
+        for(int a0 = 0; a0 < t; a0++){
+            
+            //Accepting the number of cycles
+            int n = in.nextInt();
+            
+            //If cycles is 0 then return initial height of the tree
+            if(n == 0)
+                System.out.println("1");
+            //If 1 cycle then the tree is not going to grow any taller
+            else if(n == 1)
+                System.out.println("2");
+            //If cycles more than 1
+            else{
+               //For each cycle
+               for(int i=1;i<=n;i++) 
+               {
+                    //If number is divisible by 2 then add 1 to height of tree
+                   if(i%2 == 0)
+                       ans += 1;
+                    //Multiply height by 2 if current cycle is not divisible by 2
+                   else
+                       ans *= 2;
+               }
+                    System.out.println(ans);
+               }
+            //Setting height to 1 for another testcase
+            ans=1;
+        }
+    }
+}

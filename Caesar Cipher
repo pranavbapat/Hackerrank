@@ -1,0 +1,64 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+
+public class Solution {
+	
+	public static void main(String[] args) {
+	    //Scanner object for taking user inputs
+	    Scanner in = new Scanner(System.in);
+	    
+	    //Length of unencrypted string
+	    int n = in.nextInt();
+	    
+	    //Unencrypted string
+	    String s = in.next();
+	    
+	    //Number of rotations
+	    int k = in.nextInt();
+	    
+	    //Modding by 26. If k > 26 then one complete cycle which won't change the string
+	    k = k%26;
+	    
+	    //Integer value of character
+	    int temp=0;
+	    
+	    //For each character in the unencrypted string
+	    for(int i=0;i<n;i++)
+	    {
+	      //Adding number of rotations to the char (ASCII Value)
+	    	temp = (int)s.charAt(i) + k;
+
+        //If character is a lowercase character (97-122)
+	    	if(s.charAt(i) >= 'a' && s.charAt(i) <= 'z')
+	    	{
+	    	  //If after adding the ASCII value goes above 'z' or 122
+	    	  //Mod the number and add 96 because 'a' starts from 97
+	    		if(temp > 122)
+	    	   	{
+	    			temp = temp%122;
+	    			temp += 96;
+	    	   	}
+	    	  //Printing rotated character
+	    		System.out.print((char)temp);
+	    	}
+	    	//If character is a uppercase character (65-90)
+	    	else if(s.charAt(i) >= 'A' && s.charAt(i) <= 'Z')
+	    	{
+	    	  //If after adding the ASCII value goes above 'Z' or 90
+	    	  //Mod the number and add 96 because 'A' starts from 65
+	    		if(temp > 90)
+	    	   	{
+	    			temp = temp%90;
+	    			temp += 64;
+	    	   	}
+	    	  //Printing rotated character
+	    		System.out.print((char)temp);
+	    	}
+	    	//Special characters are printed as is
+	    	else
+	    		System.out.print(s.charAt(i));
+	    }
+	}
+}

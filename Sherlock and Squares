@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        //Scanner object for taking inputs
+        Scanner in = new Scanner(System.in);
+        
+        //Number of test cases
+        int t = in.nextInt();
+        
+        //Long variables to represent a and b in the problem
+        long a=0,b=0;
+        
+        //High and low represent the square roots of the highest and lowest number in the interval
+        long high=0,low=0;
+        
+        //For each test case
+        while(t-- != 0)
+        {
+            //Input numbers a and b
+            a = in.nextLong();
+            b = in.nextLong();
+            
+            //Calculate ceilng of square root of a
+            low = (long)Math.ceil(Math.sqrt(a));
+            
+            //Calculate floor of square root of b
+            high = (long)Math.floor(Math.sqrt(b));
+            
+            //The integer differences between high and low is calculated as high - low + 1
+            //This considers only perfect squares hence we consider only integers
+            //Displaying output
+            System.out.println(high-low+1);
+        }
+    }
+}

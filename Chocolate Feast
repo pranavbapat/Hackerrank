@@ -1,0 +1,42 @@
+public class Solution {
+	
+    public static void main(String[] args) {
+        //Scanenr object for taking user inputs
+        Scanner in = new Scanner(System.in);
+        
+        //Number of test cases
+        int t = in.nextInt();
+        
+        //Integers representing wrappers and chocolates
+        int wrappers=0,chocolates=0;
+        
+        //For each test case
+        for(int a0 = 0; a0 < t; a0++){
+            //Inputting number of chocolates
+            int n = in.nextInt();
+            
+            //Inputting price of 1 chocolate
+            int c = in.nextInt();
+            
+            //Inputting wrapper exchange count to get new chocolate
+            int m = in.nextInt();
+            
+            //Calculating initial wrapper count
+            wrappers = n/c;
+            chocolates = wrappers;
+            
+            //While wrapper are greater than trading amount
+            while(wrappers >= m)
+            {
+            	//Subtract m from wrapper count
+            	wrappers -= m;
+            	//Each m wrappers represent 1 chocolate. Incrementing one chocolate.
+            	chocolates++;
+            	//Each chocolate produces one wrapper. Incrementing wrapper count
+            	wrappers++;
+            }
+            //Displaying total chocolates after trading for wrappers
+            System.out.println(chocolates);
+        }
+    }
+}

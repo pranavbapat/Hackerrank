@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+   	public static void main(String[] args) {
+   	  //Scanner object for input
+		  Scanner in = new Scanner(System.in);
+		  
+		  //Scanning inputString
+		  String inputString = in.nextLine();
+		  
+		  //Array of integers to represent frequencies of letter occurances
+		  int alphabetArray[] = new int[26];
+		  
+		  //Boolean to represent if string is a pangram or not
+		  boolean flag = true;
+		  
+		  //Converting inputString to all lower case letters
+		  inputString = inputString.toLowerCase();
+  		
+  		//Initializing frequency array to 0
+		  for(int i=0;i<26;i++)
+  			alphabetArray[i] = 0;
+		  
+		  //For each character in the inputString
+		  for(int i=0;i<inputString.length();i++)
+		  {
+			  //If character is not a space, then increment frequency in the frequency array
+			  if(inputString.charAt(i) != ' ')
+			  {
+  				//Subtracting 'a' from ASCII value of character to get index of frequency array
+  				alphabetArray[inputString.charAt(i) - 'a']++;
+			  }
+		  }
+  		
+  		//Pangrams contain all letters atleast once
+		  for(int i=0;i<26;i++)
+		    //If one letter does not occur, then string is not a pangram
+  			if(alphabetArray[i] == 0)
+	  			flag = false;
+		  
+		  //If flag is true, then inputString is a pangram. Else inputString is not a pangram.
+  		if(flag)
+	  		System.out.println("pangram");
+		  else
+  			System.out.println("not pangram");
+    }
+}

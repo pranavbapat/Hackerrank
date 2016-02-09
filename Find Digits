@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        //Scanner object for taking input
+        Scanner in = new Scanner(System.in);
+        
+        //Number of test cases
+        int t = in.nextInt();
+        int tempNum=0,count=0,divInt=0;
+        
+        //For each testcase
+        for(int a0 = 0; a0 < t; a0++){
+            int n = in.nextInt();
+            tempNum = n;
+            
+            //While tempNum does not become zero
+            while(tempNum != 0)
+            {
+                //Mod number by 10
+                divInt = tempNum % 10;
+                
+                //Not zero means divide by 0 will not occur
+                if(divInt != 0)
+                {
+                    //If number divided by single digit of number is 0, then single digit is divides number
+                    //Increment count
+                    if(n % divInt == 0)    
+                        count++;
+                }
+                //Dividing number by 10 to move to the next unit of power
+                tempNum /= 10;
+            }
+            //Displaying count
+            System.out.println(count);
+            count=0;
+        }
+    }
+}

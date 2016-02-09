@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        //Scanner object for taking inputs
+        Scanner in = new Scanner(System.in);
+        
+        //Number of testcases
+        int t = in.nextInt();
+        
+        int count=0,i=0,temp=0;
+        
+        //For all testcases
+        for(int a0 = 0; a0 < t; a0++)
+        {
+            //Input N arrival time of each student
+            int n = in.nextInt();
+            
+            //Input cancellation threshold
+            int k = in.nextInt();
+            
+            //Creating array of n integers
+            int a[] = new int[n];
+            
+            //For each student
+            for(i=0; i < n; i++)
+            {
+                //If arrival time is less than 0, increment count variable
+                temp = in.nextInt();
+                if(temp <= 0)
+                	count++;
+            }
+         
+            //If count is less than cancellation threshold, print YES. Else print NO
+            if(count < k)
+            	System.out.println("YES");
+            else
+            	System.out.println("NO");
+            count=0;
+        }
+    }
+}

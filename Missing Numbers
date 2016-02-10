@@ -1,0 +1,53 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Solution {
+	
+	public static void main(String[] args) {
+		//Scanner object for handling user inputs
+		Scanner in = new Scanner(System.in);
+		
+		//Number of numbers in list A
+		int n = in.nextInt();
+		
+		int inputNum=0;
+		
+		//Hashmap representing number and frequency of that number
+		HashMap<Integer,Integer> frequencyMap = new HashMap<Integer,Integer>();
+							
+		//For each number. If number is present in the hashmap increment count;
+		//otherwise add it in the hashmap
+		for(int i=0;i<n;i++)
+		{
+			inputNum = in.nextInt();
+			if(frequencyMap.containsKey(inputNum))
+				frequencyMap.replace(inputNum, frequencyMap.get(inputNum) + 1);
+			else
+				frequencyMap.put(inputNum, 1);
+		}
+		
+		//Number of numbers in list B
+		int m = in.nextInt();
+		
+		//For each number. If number is present in the hashmap decrement count;
+		//otherwise add it to the hashmap
+		for(int i=0;i<m;i++)
+		{
+			inputNum = in.nextInt();
+			if(frequencyMap.containsKey(inputNum))
+				frequencyMap.replace(inputNum, frequencyMap.get(inputNum) -1);
+			else
+				frequencyMap.put(inputNum, 1);
+		}
+		
+		//For each key in the hashmap
+		for(int key : frequencyMap.keySet())
+		{
+			//If numbers are missing then frequency will be non-zero
+			if(frequencyMap.get(key) != 0)
+				System.out.print(key + " ");
+		}
+		
+	}
+
+}
